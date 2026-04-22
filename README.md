@@ -5,28 +5,57 @@
 ![Bot](https://img.shields.io/badge/discord-bot-5865F2)
 ![Made by](https://img.shields.io/badge/made%20by-Mikougo-orange)
 
-A simple yet powerful Discord bot that converts text into binary and decodes binary back into readable text.
+A modern Discord utility bot focused on encoding and decoding text in multiple formats, including binary, hexadecimal, Base64, and Morse code.
 
 ---
 
 ## ✨ Features
 
-* 🔤 Encode text into binary (UTF-8)
-* 🔢 Decode binary back into text
-* ⚡ Fast and lightweight
-* 🛡️ Input validation for safe decoding
-* 🤖 Easy-to-use commands
+* 🔤 Binary encode and decode
+* 🧮 Hex encode and decode
+* 📦 Base64 encode and decode
+* 📡 Morse code encode and decode
+* 🤖 `/auto` command to detect and decode supported formats automatically
+* ⚡ Built with modern slash commands using latest `discord.py`
+
+---
+
+## 🧪 Commands
+
+```text
+/binencode
+/bindecode
+/hexencode
+/hexdecode
+/b64encode
+/b64decode
+/morseencode
+/morsedecode
+/auto
+```
 
 ---
 
 ## 🧪 Example Usage
 
 ```text
-!encode yobru
-→ 01111001 01101111 01100010 01110010 01110101
+/binencode text:hello
+→ 01101000 01100101 01101100 01101100 01101111
 
-!decode 01111001 01101111 01100010 01110010 01110101
-→ yobru
+/bindecode binary:01101000 01100101 01101100 01101100 01101111
+→ hello
+
+/hexencode text:hello
+→ 68656c6c6f
+
+/b64encode text:hello
+→ aGVsbG8=
+
+/morseencode text:hello world
+→ .... . .-.. .-.. --- / .-- --- .-. .-.. -..
+
+/auto data:68656c6c6f
+→ Detected hex -> hello
 ```
 
 ---
@@ -38,6 +67,8 @@ A simple yet powerful Discord bot that converts text into binary and decodes bin
 ├── base.py
 ├── requirements.txt
 ├── .gitignore
+├── LICENSE
+└── README.md
 ```
 
 ---
@@ -57,9 +88,7 @@ cd Say01-Pro
 pip install -r requirements.txt
 ```
 
-3. Set your bot token:
-
-* Create a `.env` file (for local use only)
+3. Create a `.env` file for local testing:
 
 ```env
 DISCORD_TOKEN=your_bot_token_here
@@ -81,7 +110,7 @@ This bot can be deployed on:
 * Render
 * VPS
 
-Set your environment variable:
+Set the environment variable:
 
 ```text
 DISCORD_TOKEN=your_bot_token_here
@@ -93,17 +122,52 @@ DISCORD_TOKEN=your_bot_token_here
 
 * Do **NOT** share your bot token
 * Do **NOT** upload your `.env` file
-* Ensure binary input is in 8-bit chunks (e.g. `01001000`)
+* Slash commands may take a short moment to appear after deployment
+* Morse code uses `/` between words
 
 ---
 
-## 🧠 Future Ideas
+## 🧠 Supported Formats
 
-* Hexadecimal encoding (`!hex`)
-* Base64 support
-* Auto-detect encode/decode
-* Message formatting improvements
-* Fun “secret message” mode 😏
+### Binary
+
+Uses 8-bit UTF-8 byte chunks.
+
+Example:
+
+```text
+01001000 01101001
+```
+
+### Hex
+
+Uses standard hexadecimal byte encoding.
+
+Example:
+
+```text
+4869
+```
+
+### Base64
+
+Uses standard Base64 text encoding.
+
+Example:
+
+```text
+SGk=
+```
+
+### Morse Code
+
+Uses spaces between letters and `/` between words.
+
+Example:
+
+```text
+.... .. / - .... . .-. .
+```
 
 ---
 
@@ -115,5 +179,4 @@ Made by **Mikougo**
 
 ## ⭐ Final Note
 
-A simple idea turned into a clean and useful utility bot.
-Perfect for learning encoding, decoding, and command handling 🚀
+Say01 Pro started as a simple binary bot and evolved into a multi-format encoding utility with slash commands, auto-detection, and cleaner command design.
